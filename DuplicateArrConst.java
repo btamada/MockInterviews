@@ -42,15 +42,11 @@ public class DuplicateArrConst {
             if(nums[i] != i) {
 
                 int tmp = nums[i];
+                if(nums[tmp] == tmp) return true;
                 nums[i] = nums[tmp];
                 nums[tmp] = tmp;
 
             }
-        }
-
-        // O(n) - Iterate through nums array to find duplicates
-        for(int i = 0; i < nums.length; i++) {
-            if(nums[i] != i) return true;
         }
 
         return false;
