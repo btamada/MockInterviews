@@ -13,7 +13,7 @@ public class DuplicateArrConst {
      *
      * Constraints: O(1) space
      *
-     * Approach: Use a swapping sort algorithm then remove adjacent duplicate elements
+     * Approach: Use a swapping sort algorithm to find any duplicate elements
      *
      * Assumptions:
      * - Non-negative integers
