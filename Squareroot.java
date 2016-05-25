@@ -6,35 +6,28 @@
 public class Squareroot {
 
     public static void main(String[] args) {
-        System.out.println(squareRoot(16.5));
+        System.out.println(sqrt(16));
     }
 
     /**
-     *
      * Algorithm Design
      *
-     * Handles floating point numbers as well
-     * Round up to nearest integer (Math.ceil) for uneven squares
+     * Use binary search to find the square of a value
      *
-     * sqrt(16) -> 4
-     * 15 -> 3
-     * 12 -> 3
-     * 11 -> 3
-     * 10 -> 3
-     * 9 -> 3
-     *
-     * @param num - the number to find the square root of
-     * @return - the square root result
+     * if the square of the value is equal to the target number, return the value
+     * If the square of the value is greater than the target number, search left
+     * If the square of the value is less than the target number, search right
      */
-    public static int squareRoot(double num) {
-        if(num < 0) throw new IllegalArgumentException("Invalid input");
-        if(num == 0 || num == 1 || num > Float.MAX_VALUE) return (int) num;
+    public static int sqrt(int num) {
+        return sqrtHelper(num, 1, num);
+    }
 
-        for(int i = (int) (num / 2); i >= 1; i--) {
-            if(i * i <= (int) num) return i;
-        }
-
-        return -1;
+    public static int sqrtHelper(int num, int min, int max) {
+        if(max < min) return -1;
+        int val = (min + max) / 2;
+        if(val * val == num)  return val;
+        else if(val * val < num) return sqrtHelper(num, val + 1, max);
+        else return sqrtHelper(num, min, val - 1);
     }
 
 }
